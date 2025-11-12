@@ -15,8 +15,8 @@ def create_app() -> Flask:
     from .logic import Joker
     from .routes import main
 
-    this_app = Flask(__name__)
-    CORS(this_app, resources={r"/*": {"origins": "*"}})
+    app = Flask(__name__)
+    CORS(app, resources={r"/*": {"origins": "*"}})
 
     BASE_DIR = pathlib.Path(__file__).parent.parent
     CONFIG_PATH = BASE_DIR / pathlib.Path("config.toml")
@@ -28,11 +28,11 @@ def create_app() -> Flask:
         print("config.toml not found!")
         return
 
-    this_app.config["LANGUAGES"] = config["LANGUAGES"]
+    app.config["LANGUAGES"] = config["LANGUAGES"]
 
-    with this_app.app_context():
+    with app.app_context():
         Joker.init_dataset()
     
-    this_app.register_blueprint(main, url_prefix="/api/v1")
+    app.register_blueprint(main, url_prefix="/api/v1")
 
-    return this_app 
+    return app 
