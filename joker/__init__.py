@@ -30,7 +30,7 @@ def create_app() -> Flask:
 
     this_app.config["LANGUAGES"] = config["LANGUAGES"]
 
-    with this_app.this_app_context():
+    with this_app.app_context():
         Joker.init_dataset()
     
     this_app.register_blueprint(main, url_prefix="/api/v1")
