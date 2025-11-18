@@ -20,7 +20,7 @@ Uses the `pyjokes` package and supports cross-origin access.
   - JSON object for joke by ID
 - Clean 404 error messages
 - `@cache` for performance
-- Fully deployed online
+- Fully [deployed online](https://abdullahali785.github.io/Jokes/)
 
 ---
 
